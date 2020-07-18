@@ -74,12 +74,10 @@ func (b LocalfsBackend) Get(key string) (metadata backends.Metadata, f io.ReadCl
 	if err != nil {
 		return
 	}
-
 	f, err = os.Open(path.Join(b.filesPath, key))
 	if err != nil {
 		return
 	}
-
 	return
 }
 

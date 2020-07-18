@@ -174,10 +174,10 @@ func setup() *web.Mux {
 	timeStartedStr = strconv.FormatInt(timeStarted.Unix(), 10)
 
 	// Routing setup
-	nameRe := regexp.MustCompile("^" + Config.sitePath + `(?P<name>[a-z0-9-\.]+)$`)
-	selifRe := regexp.MustCompile("^" + Config.sitePath + Config.selifPath + `(?P<name>[a-z0-9-\.]+)$`)
+	nameRe := regexp.MustCompile("^" + Config.sitePath + `(?P<name>[a-zA-Z_0-9-\.]+)$`)
+	selifRe := regexp.MustCompile("^" + Config.sitePath + Config.selifPath + `(?P<name>[a-zA-Z_0-9-\.]+)$`)
 	selifIndexRe := regexp.MustCompile("^" + Config.sitePath + Config.selifPath + `$`)
-	torrentRe := regexp.MustCompile("^" + Config.sitePath + `(?P<name>[a-z0-9-\.]+)/torrent$`)
+	torrentRe := regexp.MustCompile("^" + Config.sitePath + `(?P<name>[a-zA-Z_0-9-\.]+)/torrent$`)
 
 	if Config.authFile == "" || Config.basicAuth {
 		mux.Get(Config.sitePath, indexHandler)
