@@ -17,10 +17,9 @@
 			<div id="header">
 				<div id="navigation" class="right">
 					{% if auth != "header" %}
-					<a href="{{ sitepath }}">Upload</a> |
-					<a href="{{ sitepath }}paste/">Paste</a> |
+					<a href="{{ sitepath }}">Загрузить файл</a> |
+					<a href="{{ sitepath }}paste/">Написать скрипт</a> |
 					{% endif %}
-					<a href="{{ sitepath }}API/">API</a>
 					{% for custom_file_name, custom_page_name in custom_pages_names sorted %}
 					| <a href="{{ sitepath }}{{ custom_file_name }}/">{{ custom_page_name }}</a>
 					{% endfor %}
@@ -31,7 +30,7 @@
 			{% block content %}{% endblock %}
 
 			<div id="footer">
-				<a href="https://github.com/andreimarcu/linx-server">linx-server</a>
+				<a href="https://github.com/andreimarcu/linx-server">Репозиторий на GitHub</a>
 			</div>
 
 		</div>

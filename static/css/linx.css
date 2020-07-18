@@ -1,8 +1,8 @@
 body {
-  background-color: #E8ECF0;
-  color: #556A7F;
+  background-color: #232323;
+  color: #a5a5a5;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", sans-serif;
   font-size: 14px;
 }
 
@@ -20,7 +20,7 @@ body {
 
 #header a {
   text-decoration: none;
-  color: #556A7F;
+  color: #dcdcdc;
 }
 
 #navigation {
@@ -29,16 +29,16 @@ body {
 
 #navigation a {
   text-decoration: none;
-  border-bottom: 1px dotted #556A7F;
-  color: #556A7F;
+  size: 9px;
+  color: #a8a8a8;
 }
 
 #navigation a:hover {
-  background-color: #C7D1EB;
+  background-color: #e2e2e2;
 }
 
 #main {
-  background-color: white; 
+  background-color: #6a6a6a;
 
   padding: 6px 5px 8px 5px; 
 
@@ -50,7 +50,7 @@ body {
 }
 
 #main a {
-  color: #556A7F;
+  color: #8e8e8e;
 }
 
 #normal-content {
@@ -94,11 +94,11 @@ body {
 
 #info a {
   text-decoration: none;
-  color: #556A7F;
+  color: #797979;
 }
 
 #info a:hover {
-  border-bottom: 1px dotted gray;
+  border-bottom: 1px dotted #1a1a1a;
   background-color: #E8ECF0;
 }
 
@@ -108,7 +108,7 @@ body {
 }
 
 #footer {
-  color: gray;
+  color: #6c6c6c;
   text-align: right;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -116,7 +116,7 @@ body {
 }
 
 #footer a {
-  color: gray;
+  color: #6c6c6c;
   text-decoration: none;
 }
 
@@ -202,8 +202,8 @@ body {
 
 #file-uploader a {
   text-decoration: none;
-  border-bottom: 1px dotted #556A7F;
-  color: #556A7F;
+  border-bottom: 1px dotted #616161;
+  color: #1a1a1a;
   font-weight: bold;
 }
 
@@ -215,11 +215,11 @@ body {
 #linx_display_links {
   display:none; 
   padding: 20px; 
-  background-color: #00AFF5; 
-  border-top: 3px solid #6bacf5; 
-  border-left: 3px solid #6bacf5; 
-  border-right: 3px solid #6bacf5; 
-  border-bottom: 3px solid #6bacf5; 
+  background-color: #b10000;
+  border-top: 3px solid #c15050;
+  border-left: 3px solid #c15050;
+  border-right: 3px solid #c15050;
+  border-bottom: 3px solid #c15050;
   margin-top: 15px;
   margin-bottom: 10px; 
   font-size: 12px; 
@@ -317,7 +317,7 @@ body {
 
 #info input[type=text] {
   border: 1px solid #eaeaea;
-  color: #556A7F;
+  color: #d46868;
   padding: 2px 4px;
   font-family: Arial, Helvetica, sans-serif;
 }

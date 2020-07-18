@@ -14,18 +14,18 @@
         </div>
 
         <div id="dzone" class="dz-default dz-message">
-            <span>Click or Drop file(s) or Paste image</span>
+            <span>Нажмите или перетащите файлы для сохранения.</span>
         </div>
 
         <div id="choices">
             <span class="hint--top hint--bounce"
                 data-hint="Replace the filename with random characters. The file extension is retained">
                 <label><input {% if forcerandom %} disabled {% endif %} name="randomize" id="randomize" type="checkbox"
-                        checked /> Randomize filename</label>
+                        checked /> Случайное имя</label>
             </span>
 
             <div id="expiry">
-                <label>File expiry:
+                <label>Удалениче через
                     <select name="expires" id="expires">
                         {% for expiry in expirylist %}
                         <option value="{{ expiry.Seconds }}" {% if forloop.Last %} selected{% endif %}>
@@ -39,7 +39,7 @@
                     data-hint="Require password to access (this does not encrypt the file but only limits access)">
                     <label>
                         <input type="checkbox" id="access_key_checkbox" />
-                        <span id="access_key_text">Require access password</span>
+                        <span id="access_key_text">Запрашивать пароль</span>
                     </label>
                     <input id="access_key_input" name="access_key" type="text" placeholder="Access password" />
                 </span>

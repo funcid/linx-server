@@ -5,7 +5,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/andreimarcu/linx-server/backends"
+	"github.com/andreimarcu/linx-server/expiry"
+	"github.com/dchest/uniuri"
+	"github.com/zenazn/goji/web"
+	"gopkg.in/h2non/filetype.v1"
 	"io"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"path"
@@ -14,12 +20,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/andreimarcu/linx-server/backends"
-	"github.com/andreimarcu/linx-server/expiry"
-	"github.com/dchest/uniuri"
-	"github.com/zenazn/goji/web"
-	"gopkg.in/h2non/filetype.v1"
 )
 
 var FileTooLargeError = errors.New("File too large.")
@@ -338,8 +338,56 @@ func processUpload(upReq UploadRequest) (upload Upload, err error) {
 	return
 }
 
+var words = [][]string{{
+	"таинственный", "ласковый", "сказочный", "пряничный", "серебрянный", "каменный", "пламенный", "удачный",
+	"украденный", "захваченный", "положенный", "признательный", "связанный", "брошенный", "уверенный", "отчаянный",
+	"изнеженный", "контуженный", "заботливый",
+}, {
+	"лучик", "тортик", "пряник", "крестик", "мальчик", "пончик", "кластер", "кратер", "домик", "ролик", "миром",
+	"пластырь", "автор", "костя", "миша", "творог", "сахар", "отблеск", "шепот",
+}, {
+	"дремучего", "поющего", "вонючего", "изящного", "стеклянного", "кошмарного", "подпольного", "полярного",
+	"ненужного", "хрустального", "волшебного", "нахального", "красивого", "рабочего", "упавшего", "дешевого",
+	"несчастного", "линейного", "огромного", "токсичного", "четвертого",
+}, {
+	"жира", "мира", "бана", "леса", "кода", "снега", "джона", "пепла", "ветра", "храма", "шрама", "дарка", "фикса",
+	"фанка", "кости",
+}}
+
+var styles = [][][]string{{
+	{"a", "A"}, {"b", "B"}, {"v", "V"}, {"g", "G"}, {"d", "D"}, {"e", "E"}, {"zh", "zH", "Zh", "ZH"},
+	{"z", "Z"}, {"i", "I"}, {"i", "I"}, {"k", "K"}, {"l", "L"}, {"m", "M"}, {"n", "N"}, {"o", "O"}, {"p", "P"},
+	{"r", "R"}, {"s", "S"}, {"t", "T"}, {"u", "U"}, {"f", "F"}, {"kh", "kH", "Kh", "KH"},
+	{"c", "C", "ts", "TS", "tS", "Ts"}, {"ch", "CH", "cH", "Ch"}, {"sh", "SH", "sH", "Sh"},
+	{"sch", "ScH", "sCH", "SCH"}, {""}, {"y", "Y"}, {""}, {"e", "E"}, {"yu", "YU", "yU", "Yu"}, {"ya", "YA", "yA", "Ya"},
+}, {
+	{"a", "A"}, {"6"}, {"B"}, {"r"}, {"g"}, {"e", "E"}, {"zh", "ZH"}, {"3"}, {"u"}, {"u"}, {"k", "K"}, {"L"}, {"M"},
+	{"H"}, {"O"}, {"n"}, {"p", "P"}, {"c", "C"}, {"T"}, {"y"}, {"F"}, {"x"}, {"Tc", "TC"}, {"4"}, {"w"}, {"W", "w"},
+	{"b"}, {"bl", "bI"}, {"b"}, {"e", "E"}, {"IO"}, {"9I", "9l"},
+}}
+
+func randomizeWord(word string, style [][]string) string{
+	pipe := ""
+	for _, char := range word {
+		id := char - 1072
+		if id < 0 || id >=  int32(len(style)) {
+			pipe += string(char)
+		} else {
+			pipe += style[id][rand.Intn(len(style[id]))]
+		}
+	}
+	return pipe
+}
+
 func generateBarename() string {
-	return uniuri.NewLenChars(8, []byte("abcdefghijklmnopqrstuvwxyz0123456789"))
+	str := ""
+	for i := 0; i < len(words); i++ {
+		if i > 0 {
+			str += "_"
+		}
+		str += words[i][rand.Intn(len(words[i]))]
+	}
+	return randomizeWord("моя_оборона_" + str, styles[rand.Intn(len(styles))])
 }
 
 func generateJSONresponse(upload Upload, r *http.Request) []byte {

@@ -464,32 +464,32 @@
  * Info
  */
 .hint--info:after {
-  background-color: #3986ac;
-  text-shadow: 0 -1px 0px #1a3c4d; }
+  background-color: #bb4a4a;
+  text-shadow: 0 -1px 0px #8d2222; }
 
 .hint--info.hint--top-left:before {
-  border-top-color: #3986ac; }
+  border-top-color: #bb4a4a; }
 
 .hint--info.hint--top-right:before {
-  border-top-color: #3986ac; }
+  border-top-color: #bb4a4a; }
 
 .hint--info.hint--top:before {
-  border-top-color: #3986ac; }
+  border-top-color: #bb4a4a; }
 
 .hint--info.hint--bottom-left:before {
-  border-bottom-color: #3986ac; }
+  border-bottom-color: #bb4a4a; }
 
 .hint--info.hint--bottom-right:before {
-  border-bottom-color: #3986ac; }
+  border-bottom-color: #bb4a4a; }
 
 .hint--info.hint--bottom:before {
-  border-bottom-color: #3986ac; }
+  border-bottom-color: #bb4a4a; }
 
 .hint--info.hint--left:before {
-  border-left-color: #3986ac; }
+  border-left-color: #bb4a4a; }
 
 .hint--info.hint--right:before {
-  border-right-color: #3986ac; }
+  border-right-color: #bb4a4a; }
 
 /**
  * Success
